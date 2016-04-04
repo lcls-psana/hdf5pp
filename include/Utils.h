@@ -161,7 +161,7 @@ public:
         // steal a pointer, it has to be free()d
         boost::shared_ptr<Data> shptr(static_cast<Data*>(vl_data.p), Unmalloc<Data>());
 
-        unsigned shape[] = { vl_data.len };
+        unsigned shape[] = { unsigned(vl_data.len) };
         return ndarray<Data, Rank>(shptr, shape);
 
       }
@@ -315,6 +315,20 @@ public:
    *
    *  @throw hdf5pp::Exception
    */
+
+  static std::vector<std::string> 
+    readListStrings(hdf5pp::Group group,const std::string &dataset, 
+                    hsize_t index = -1);
+
+  static void 
+    storeListStrings(hdf5pp::Group group, const std::string &dataset, 
+                     const std::vector<std::string> & listStrings, long maxStrLen=-1);
+
+  static void 
+    storeListStringsAt(hdf5pp::Group group, const std::string &dataset, 
+                       const std::vector<std::string> & listStrings, long maxStrLen=-1, long index=-1);
+
+  
   template <typename ElemType, unsigned NDim>
   static void storeNDArrayAt(hdf5pp::Group group, const std::string& dataset, const ndarray<ElemType, NDim>& array,
       long index, const Type& native_type = TypeTraits<ElemType>::native_type())

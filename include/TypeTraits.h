@@ -57,8 +57,12 @@ struct TypeTraitsHelper {
 
 template <typename T>
 struct TypeTraits  {
-  static Type stored_type(size_t size=0) { return TypeTraitsHelper::sized_h5type(T::stored_type(), size); }
-  static Type native_type(size_t size=0) { return TypeTraitsHelper::sized_h5type(T::native_type(), size); }
+  static Type stored_type(size_t size=0) { 
+    return TypeTraitsHelper::sized_h5type(T::stored_type(), size); 
+  }
+  static Type native_type(size_t size=0) { 
+    return TypeTraitsHelper::sized_h5type(T::native_type(), size); 
+  }
   static const void* address( const T& value ) { return static_cast<const void*>(&value) ; }
   static void* address( T& value ) { return static_cast<void*>(&value) ; }
 };
