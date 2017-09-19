@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <vector>
 #include <string>
+#include <iostream>
 
 // helper class to create a test file name 
 // for a test, and remove it in the desctructor
