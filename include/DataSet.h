@@ -142,7 +142,7 @@ public:
   Type type();
 
   // returns true if there is a real object behind
-  bool valid() const { return m_id; }
+  bool valid() const { return (bool)m_id; }
 
   // get dataset name, this will likely be a relative name
   std::string name() const;
